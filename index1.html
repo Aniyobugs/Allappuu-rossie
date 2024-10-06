@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Dealership</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f4f4f4;
+        }
+
+        header {
+            background: #333;
+            padding: 10px 20px;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ff6600;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .form-container {
+            padding: 50px;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        .form-container h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-container form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .form-container form input,
+        .form-container form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-container form button {
+            width: 100%;
+            padding: 15px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-container form button:hover {
+            background-color: #ff6600;
+        }
+
+        .hero {
+            background: url('/synthwave-car-ai-162023.png') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin: 20px 0;
+        }
+
+        .cta {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #ff6600;
+            color: #fff;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .cta:hover {
+            background: #e55c00;
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cars {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .car img {
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        /* .car:hover img {
+            transform: scale(1.1);
+        } */
+
+        footer {
+            background: #333;
+            padding: 20px;
+            color: #fff;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .three-d-model {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        canvas {
+            width: 100%;
+            height: 400px;
+        }
+
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Car Dealership</div>
+        <nav>
+            <a href="index1.html" onclick="showPage('home')">Home</a>
+            <a href="login.html" onclick="showPage('login')">Login</a>
+            <a href="signup.html" onclick="showPage('signup')">Sign Up</a>
+            <a href="contact.html" onclick="showPage('contact')">Contact Us</a>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="page">
+        <div class="hero">
+            <h1>Welcome to the Best Car Dealership!</h1>
+            <p>Explore our wide range of cars.</p>
+            <div class="btn-container">
+                <a href="cars.html" class="cta">View Cars</a>
+            </div>
+        </div>
+        <section id="cars" class="cars">
+            <h2>Our Cars</h2>
+            <div class="car-grid">
+                <div class="car">
+                    <img src="https://images.unsplash.com/photo-1508974239320-0a029497e820?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNhcnxlbnwwfDB8MHx8fDA%3D" alt="Car 1">
+                    <p>𝑭𝒆𝒓𝒓𝒂𝒓𝒊</p>
+                </div>
+                <div class="car">
+                    <img src="https://images.unsplash.com/photo-1600712242805-5f78671b24da?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGJ1Z2F0dGl8ZW58MHx8MHx8fDA%3D" alt="Car 2">
+                    <p>𝕭𝖚𝖌𝖆𝖙𝖙𝖎</p>
+                </div>
+                <div class="car">
+                    <img src="https://images.unsplash.com/photo-1600710967322-a4562604bb10?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGtvZW5pZ3NlZ2d8ZW58MHx8MHx8fDA%3D" alt="Car 3">
+                    <p>ᴋᴏᴇɴɪɢsᴇɢɢ</p>
+                </div>
+                <div class="car">
+                    <img src="https://images.unsplash.com/photo-1523630098575-9ddbebd3e6f3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGxhbWJvcmdoaW5pfGVufDB8fDB8fHww" alt="Car 4">
+                    <p>𝓁𝒶𝓂𝒷ℴ𝓇𝑔𝒽𝒾𝓃𝒾</p>
+                </div>
+                <div class="car">
+                    <img src="https://images.unsplash.com/photo-1434285692992-0a83b5617f7e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8dmludGFnZSUyMGNhcnxlbnwwfHwwfHx8MA%3D%3D" alt="Car 5">
+                    <p>𝚟𝚒𝚗𝚝𝚊𝚐𝚎 𝚌𝚊𝚛</p>
+                </div>
+
+                </div>
+            </div>
+        </section>
+        
+    </section>
+
+    <!-- Login Section -->
+    <section id="login" class="page hidden">
+        <div class="form-container">
+            <h2>Login</h2>
+            <form>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Signup Section -->
+    <section id="signup" class="page hidden">
+        <div class="form-container">
+            <h2>Sign Up</h2>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="page hidden">
+        <div class="form-container">
+            <h2>Contact Us</h2>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Car Dealership. All Rights Reserved.</p>
+    </footer>
+
+   
